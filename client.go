@@ -98,3 +98,17 @@ func (client *Client) Upload(ctx context.Context, bucket, objectName string, dat
 
 	return nil
 }
+
+// Delete deletes object by object key in specific bucket.
+func (client *Client) Delete(ctx context.Context, bucket, objectName string) error {
+	return MinioError.Wrap(client.API.RemoveObject(ctx, bucket, objectName, minio.RemoveObjectOptions{}))
+}
+
+// ListKeys return list of object keys from requested bucket.
+func (client *Client) ListKeys(ctx context.Context, bucket string) (keys []string, err error) {
+	for object := range client.API.ListObjects(ctx, bucket, minio.ListObjectsOptions{Recursive: true}) {
+		keys = append(keys, object.Key)
+	}
+
+	return
+}

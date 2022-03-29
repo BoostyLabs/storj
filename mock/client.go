@@ -17,3 +17,13 @@ func (mock *Mock) Upload(ctx context.Context, bucket, objectName string, data []
 func (mock *Mock) Download(ctx context.Context, bucket, objectName string, buffer []byte) ([]byte, error) {
 	return nil, nil
 }
+
+// Delete mock for delete method.
+func (mock *Mock) Delete(ctx context.Context, bucket, objectName string) error {
+	return nil
+}
+
+// ListKeys mock for list keys method.
+func (mock *Mock) ListKeys(ctx context.Context, bucket string) ([]string, error) {
+	return nil, nil
+}
