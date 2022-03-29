@@ -105,7 +105,7 @@ func (client *Client) Delete(ctx context.Context, bucket, objectName string) err
 }
 
 // ListKeys return list of object keys from requested bucket.
-func (client *Client) ListKeys(ctx context.Context, bucket string) (keys []string, err error) {
+func (client *Client) ListKeys(ctx context.Context, bucket string) (keys []string) {
 	for object := range client.API.ListObjects(ctx, bucket, minio.ListObjectsOptions{Recursive: true}) {
 		keys = append(keys, object.Key)
 	}

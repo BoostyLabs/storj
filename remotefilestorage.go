@@ -12,5 +12,5 @@ type RemoteFileStorage interface {
 	Upload(ctx context.Context, bucket, objectName string, data []byte) error
 	Download(ctx context.Context, bucket, objectName string) ([]byte, error)
 	Delete(ctx context.Context, bucket, objectName string) error
-	ListKeys(ctx context.Context, bucket string) ([]string, error)
+	ListKeys(ctx context.Context, bucket string) []string
 }

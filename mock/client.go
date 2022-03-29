@@ -3,7 +3,13 @@
 
 package mock
 
-import "context"
+import (
+	"context"
+
+	"github.com/BoostyLabs/storj"
+)
+
+var _ storj.RemoteFileStorage = (*Mock)(nil)
 
 // Mock mocked struct for remote file storage call.
 type Mock struct{}
@@ -14,7 +20,7 @@ func (mock *Mock) Upload(ctx context.Context, bucket, objectName string, data []
 }
 
 // Download mock for download method.
-func (mock *Mock) Download(ctx context.Context, bucket, objectName string, buffer []byte) ([]byte, error) {
+func (mock *Mock) Download(ctx context.Context, bucket, objectName string) ([]byte, error) {
 	return nil, nil
 }
 
@@ -24,6 +30,6 @@ func (mock *Mock) Delete(ctx context.Context, bucket, objectName string) error {
 }
 
 // ListKeys mock for list keys method.
-func (mock *Mock) ListKeys(ctx context.Context, bucket string) ([]string, error) {
-	return nil, nil
+func (mock *Mock) ListKeys(ctx context.Context, bucket string) []string {
+	return nil
 }
