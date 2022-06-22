@@ -7,6 +7,7 @@ import (
 	"context"
 
 	"github.com/BoostyLabs/storj"
+	"github.com/minio/minio-go/v7"
 )
 
 var _ storj.RemoteFileStorage = (*Mock)(nil)
@@ -30,6 +31,6 @@ func (mock *Mock) Delete(ctx context.Context, bucket, objectName string) error {
 }
 
 // ListKeys mock for list keys method.
-func (mock *Mock) ListKeys(ctx context.Context, bucket string) []string {
+func (mock *Mock) ListKeys(ctx context.Context, bucket string, options minio.ListObjectsOptions) []string {
 	return nil
 }
