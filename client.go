@@ -27,10 +27,10 @@ var (
 
 // Config is the setup for a particular client.
 type Config struct {
-	S3Gateway string `json:"s3Gateway"`
-	AccessKey string `json:"accessKey"`
-	SecretKey string `json:"secretKey"`
-	Region    string `json:"region" default:"us-east-1"`
+	S3Gateway string `json:"s3Gateway" env:"S3_GATEWAY"`
+	AccessKey string `json:"accessKey" env:"ACCESS_KEY"`
+	SecretKey string `json:"secretKey" env:"SECRET_KEY"`
+	Region    string `json:"region" env:"REGION" default:"us-east-1"`
 }
 
 // Client implements basic S3 Client with minio.
